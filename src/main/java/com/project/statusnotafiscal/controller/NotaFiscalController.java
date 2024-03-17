@@ -28,7 +28,7 @@ public class NotaFiscalController {
     public List<Object> findMostUpdated(){
         return notaFiscalService.findMostUpdated();
     }
-    @GetMapping("/{estado}")
+    @GetMapping("/estado/{estado}")
     public List<NotaFiscal> findByEstado(@PathVariable("estado") String estado, @RequestParam boolean lastOne){
         System.out.println(lastOne);
         List<NotaFiscal> notasFiscais= notaFiscalService.findByEstado(estado);
@@ -40,9 +40,9 @@ public class NotaFiscalController {
         return notasFiscais; //testado
     }
 
-    @GetMapping("/data/{data}")
-    public List<NotaFiscal> findByData(@PathVariable("data") String data){
-        return notaFiscalService.findByData(data);
+    @GetMapping("/data")
+    public List<NotaFiscal> findByData(@RequestParam String value){
+        return notaFiscalService.findByData(value);
     }  //testado
 
     @GetMapping("/unavailable")
