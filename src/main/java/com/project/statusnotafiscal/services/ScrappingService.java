@@ -28,7 +28,7 @@ public class ScrappingService {
 
     final String url = "https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx";
 
-    final int delay = 3000000; //mudar para 5 minutos quando enviar
+    final int delay = 300000; //mudar para 5 minutos quando enviar
 
     @Scheduled(fixedDelay = delay)
     void scrap() throws IOException {
