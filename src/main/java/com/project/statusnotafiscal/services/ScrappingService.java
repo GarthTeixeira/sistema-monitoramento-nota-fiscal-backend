@@ -32,7 +32,7 @@ public class ScrappingService {
 
     @Scheduled(fixedDelay = delay)
     void scrap() throws IOException {
-        //retriveData();
+        retriveData();
     }
 
     void retriveData() throws IOException {
