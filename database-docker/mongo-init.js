@@ -11,7 +11,7 @@ db.createUser(
   }
 );
 
-db.createCollection('notasFiscais')
+db.createCollection('notaFiscal')
 
 db.notasFiscais.insertOne({
     "autorizador":"SP",
