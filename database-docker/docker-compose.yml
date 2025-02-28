@@ -1,34 +1,30 @@
-version: '3.8'
 services:
   mongodb:
     image: mongo
     restart: always
     ports:
-      - 27017:27017
+      - 27018:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_DATABASE: notas-fiscais
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-      - mongo-volume:/data/db
+      - mongo_data:/data/db
 
 
-  mongo-express:
+  mongodb-express:
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - 8082:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongodb:27017/notas-fiscais
-      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongodb:27017/
+      ME_CONFIG_BASICAUTH: false
     depends_on:
       - mongodb
 volumes:
-  mongo-volume:
-
-networks:
-  default:
-    name: mongodb_network
+  mongo_data:
+    name: nota_fiscais_volume
